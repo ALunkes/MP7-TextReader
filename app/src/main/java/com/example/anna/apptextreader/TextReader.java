@@ -12,18 +12,10 @@ import android.widget.Toast;
 import android.speech.tts.TextToSpeech.OnInitListener;
 import java.util.Locale;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import org.json.JSONObject;
 
 public class TextReader extends AppCompatActivity implements OnInitListener {
     private TextToSpeech myTTS;
@@ -41,7 +33,7 @@ public class TextReader extends AppCompatActivity implements OnInitListener {
         read.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                Log.d("fuck", "Read button clicked");
+                Log.d("test", "Read button clicked");
                 inputedText = (EditText)findViewById(R.id.addText);
                 String stringTextInput = inputedText.getText().toString();
                 Toast.makeText(getApplicationContext(),inputedText.getText() , Toast.LENGTH_LONG).show();
@@ -52,7 +44,7 @@ public class TextReader extends AppCompatActivity implements OnInitListener {
         pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                Log.d("fuck", "Stop button clicked");
+                Log.d("test", "Stop button clicked");
                 stopReading();
             }
         });
@@ -60,14 +52,14 @@ public class TextReader extends AppCompatActivity implements OnInitListener {
             quote.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(final View v) {
-                    Log.d("fuck", "Stop button clicked");
+                    Log.d("test", "Stop button clicked");
                     new GetQuote().execute();
                     try {
-                    Thread.sleep(1000);
+                    Thread.sleep(2000);
                     } catch (Exception e) {
-                        Log.d("fuck", "wtf");
+                        Log.d("test", "wtf");
                     }
-                    Log.d("fuck", GetQuote.quote);
+                    Log.d("test", GetQuote.quote);
                     startRead(parseJson(GetQuote.quote));
                 }
             });
@@ -78,10 +70,6 @@ public class TextReader extends AppCompatActivity implements OnInitListener {
         }
     }
     private void startRead(String textToRead) {
-        //EditText enteredText
-       // String textToRead = inputedText.getText().toString();
-        Toast.makeText(getApplicationContext(), "Got here",
-                Toast.LENGTH_LONG).show();
         myTTS.speak(textToRead, TextToSpeech.QUEUE_FLUSH, null);
     }
     private void stopReading() {

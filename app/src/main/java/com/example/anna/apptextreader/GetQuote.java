@@ -4,11 +4,11 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
 
 public class GetQuote extends AsyncTask<Void, Void, Integer>{
     static String quote = "";
@@ -29,9 +29,9 @@ public class GetQuote extends AsyncTask<Void, Void, Integer>{
                 }
                 inputStream.close();
                 quote = response;
-                Log.d("fuck", response);
+                Log.d("test", response);
             } catch (Exception e) {
-                Log.d("fuck", e.toString());
+                Log.d("test", e.toString());
             }
             return 0;
 
